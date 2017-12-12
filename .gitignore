@@ -2,6 +2,7 @@
 *.class
 *.classpath
 *.project
+*.project
 
 # Idea file
 /.idea/*
