@@ -2,7 +2,8 @@
 *.class
 
 # Idea file
-.idea/*
+/.idea/*
+*.iml
 
 #Folders
 /.metadata/*
