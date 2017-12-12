@@ -1,0 +1,9 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<name>Maven Default Project</name>
+
+	<groupId>mitrofanov82.edu.javagroup1</groupId>
+	<artifactId>AngryChess</artifactId>
+	<version>0.0.0</version>
+
+</project>
