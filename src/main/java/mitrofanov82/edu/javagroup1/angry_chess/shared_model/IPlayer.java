@@ -1,5 +1,7 @@
 package mitrofanov82.edu.javagroup1.angry_chess.shared_model;
 
-public interface Player {
-	//....
+public interface IPlayer {
+	String getName();
+	//
+	//
 }
