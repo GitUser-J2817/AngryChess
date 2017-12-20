@@ -1,17 +1,18 @@
 package mitrofanov82.edu.javagroup1.angry_chess.model;
 
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.ChessBoard;
-import mitrofanov82.edu.javagroup1.angry_chess.shared_model.Game;
-import mitrofanov82.edu.javagroup1.angry_chess.shared_model.Player;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
 
-public class ModelFacade implements Game {
+public class ModelFacade implements IGame {
 
-	public Player getWhitePlayer() {
+	public IPlayer getWhitePlayer() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Player getBlackPlayer() {
+	public IPlayer getBlackPlayer() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -26,5 +27,10 @@ public class ModelFacade implements Game {
 		return null;
 	}
 	//all method that are required for any UI.
+
+	public FigureType getFigureType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
