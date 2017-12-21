@@ -2,10 +2,15 @@ package mitrofanov82.edu.javagroup1.angry_chess.shared_model;
 
 public interface IGame {
 	
-	FigureType getFigureType();
+	default boolean isFinished() {
+		return getPlayerToMove() == null;
+	};
+	
+	IPlayer getPlayerToMove(); //(null if finished)
+	//IGameResult result; //ENUM: WHITE_WIN, B_WIN, DRAW, NOT_FINISHED
+	FigureType[][] getCurrentPosition();
 	IPlayer getWhitePlayer();
 	IPlayer getBlackPlayer();
-	ChessBoard getBoard();
 	String getHistoryLog();
 	
 }

@@ -32,5 +32,17 @@ public class ModelFacade implements IGame {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public IPlayer getPlayerToMove() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FigureType[][] getCurrentPosition() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
