@@ -7,7 +7,7 @@ public interface IGame {
 	};
 	
 	IPlayer getPlayerToMove(); //(null if finished)
-	//IGameResult result; //ENUM: WHITE_WIN, B_WIN, DRAW, NOT_FINISHED
+	GameResultType getGameResult(); //ENUM: WHITE_WIN, B_WIN, DRAW, NOT_FINISHED
 	FigureType[][] getCurrentPosition();
 	IPlayer getWhitePlayer();
 	IPlayer getBlackPlayer();
