@@ -1,5 +1,7 @@
 package mitrofanov82.edu.javagroup1.angry_chess.model;
 
+import java.util.ArrayList;
+
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.GameStatusType;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
@@ -22,7 +24,7 @@ public class ModelFacade implements IGame {
 		return null;
 	}
 
-	public String getHistoryLog() {
+	public ArrayList<String> getHistoryLog() {
 		// TODO Auto-generated method stub
 		return null;
 	}

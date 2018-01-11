@@ -4,17 +4,34 @@ import java.util.List;
 
 public interface IFaсade {
 
-	IGame createNewGame(); //кто создаёт ID игры и нужно ли все команды индифицировать по ID?
-	IGame makeMove();//придумать как передовать кординаты
-	IGame getCurentGame(long gameId);
-	IGame endCurrentGame(GameStatusType status);
-	
+	IGame createNewGame(long gameId, IPlayer p1, IPlayer p2); //кто создаёт ID игры и нужно ли все команды индифицировать по ID?
+	IGame makeMove(IGame game, Coord from, Coord to);//придумать как передовать кординаты
+	IGame getGameById(long gameId);
+	IGame endGame(IGame game, GameStatusType status);
 	GameStatusType getGameStatus(long gameId);
+	List<IGame> getCurrentGames();
 	
-	List<IPlayer>getAllRegisteredPlayers();
+	//перенести в фасад персистенс-модуля
+	List<IGame> getGamesHistory();
+	List<IGame>getGamesHistory(IPlayer p);
+	List<IGame>getGamesHistory(IPlayer p1, IPlayer p2);
+	List<IPlayer> getAllRegisteredPlayers();
 	
-	List<IGame>getGameHistory();
-	List<IGame>getGameHistory(IPlayer p);
-	List<IGame>getGameHistory(IPlayer p1, IPlayer p2);
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
