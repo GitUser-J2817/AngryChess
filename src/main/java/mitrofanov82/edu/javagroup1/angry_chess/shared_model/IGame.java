@@ -2,15 +2,24 @@ package mitrofanov82.edu.javagroup1.angry_chess.shared_model;
 
 public interface IGame {
 	
-	default boolean isFinished() {
-		return getPlayerToMove() == null;
-	};
+	
+	long getGameId();
+	GameStatusType getGameStatus();
+	FigureType[][] getCurrentPosition();
 	
 	IPlayer getPlayerToMove(); //(null if finished)
-	GameResultType getGameResult(); //ENUM: WHITE_WIN, B_WIN, DRAW, NOT_FINISHED
-	FigureType[][] getCurrentPosition();
 	IPlayer getWhitePlayer();
 	IPlayer getBlackPlayer();
-	String getHistoryLog();
+	
+	//Выбрать что-то:
+	// String[] getHistoryLog();
+	// ArrayList<String> getHistoryLog();
+	
+	default boolean isFinished() {
+		return getPlayerToMove() == null;
+	};//После переделки GameStatusType(GameResultType) нужен ли этот метод,
+		//или как дополнительный пусть будет?
+
+	
 	
 }
