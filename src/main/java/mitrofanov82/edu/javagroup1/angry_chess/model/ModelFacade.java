@@ -1,7 +1,7 @@
 package mitrofanov82.edu.javagroup1.angry_chess.model;
 
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
-import mitrofanov82.edu.javagroup1.angry_chess.shared_model.GameResultType;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.GameStatusType;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
 
@@ -46,7 +46,13 @@ public class ModelFacade implements IGame {
 	}
 
 	@Override
-	public GameResultType getGameResult() {
+	public long getGameId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public GameStatusType getGameStatus() {
 		// TODO Auto-generated method stub
 		return null;
 	}
