@@ -1,17 +1,20 @@
 package mitrofanov82.edu.javagroup1.angry_chess.model;
 
-import mitrofanov82.edu.javagroup1.angry_chess.shared_model.ChessBoard;
-import mitrofanov82.edu.javagroup1.angry_chess.shared_model.Game;
-import mitrofanov82.edu.javagroup1.angry_chess.shared_model.Player;
+import java.util.ArrayList;
 
-public class ModelFacade implements Game {
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.GameStatusType;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
 
-	public Player getWhitePlayer() {
+public class ModelFacade implements IGame {
+
+	public IPlayer getWhitePlayer() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Player getBlackPlayer() {
+	public IPlayer getBlackPlayer() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -21,10 +24,39 @@ public class ModelFacade implements Game {
 		return null;
 	}
 
-	public String getHistoryLog() {
+	public ArrayList<String> getHistoryLog() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	//all method that are required for any UI.
+
+	public FigureType getFigureType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IPlayer getPlayerToMove() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FigureType[][] getCurrentPosition() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long getGameId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public GameStatusType getGameStatus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
