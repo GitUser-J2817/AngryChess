@@ -20,10 +20,10 @@ class Game implements IGame {
 	GameStatusType gameStatus;
 	long id;
 
-	// Constructor
+	// Constructors
 	Game() {
-		// TODO Constructor
-		// --chessBoard - начальная растановка сдеся;
+		// TODO 1.1 Constructors
+		// TODO 1.2 chessBoard - начальная растановка сдеся;
 	}
 
 	// Getters
@@ -73,7 +73,7 @@ class Game implements IGame {
 		tempArrayStrings.add(lastMove);
 		tempArrayStrings.addAll(historyLog);
 		this.historyLog = tempArrayStrings;
-		tempArrayStrings=null;
+		tempArrayStrings = null;
 	}
 
 	void setGameStatus(GameStatusType gameStatus) {
