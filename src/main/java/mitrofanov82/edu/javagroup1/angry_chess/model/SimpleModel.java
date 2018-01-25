@@ -11,6 +11,8 @@ import mitrofanov82.edu.javagroup1.angry_chess.shared_model.exceptions.Incorrect
 
 public class SimpleModel implements IFaсade {
 
+	private Model model;
+	
 	@Override
 	public IGame createNewGame(long gameId, IPlayer p1, IPlayer p2) throws ChessModelException {
 		// TODO Auto-generated method stub
