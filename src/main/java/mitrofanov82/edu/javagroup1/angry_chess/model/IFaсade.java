@@ -1,7 +1,11 @@
-package mitrofanov82.edu.javagroup1.angry_chess.shared_model;
+package mitrofanov82.edu.javagroup1.angry_chess.model;
 
 import java.util.List;
 
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.Coord;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.GameStatusType;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.exceptions.ChessModelException;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.exceptions.IncorrectMoveException;
 
