@@ -7,6 +7,11 @@ import mitrofanov82.edu.javagroup1.angry_chess.shared_model.GameStatusType;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
 
+/**
+ * Class for Data Transfer Object a <b>Game</b>, implement the interface <b>IGame</b> <br>
+ * 
+ * @author Ilya Zhukov,  <br>
+ */
 class Game implements IGame {
 	// Fields
 	// --player--
@@ -36,27 +41,27 @@ class Game implements IGame {
 	}
 
 	public IPlayer getPlayerToMove() {
-		// TODO getPlayerToMove()
+		// TODO method getPlayerToMove()
 		return null;
 	}
 
 	public ArrayList<String> getHistoryLog() {
-		// TODO getHistoryLog()
+		// TODO method getHistoryLog()
 		return null;
 	}
 
 	public FigureType[][] getCurrentPosition() {
-		// TODO getCurrentPosition()
+		// TODO method getCurrentPosition()
 		return null;
 	}
 
 	public long getGameId() {
-		// TODO getGameId()
+		// TODO method getGameId()
 		return 0;
 	}
 
 	public GameStatusType getGameStatus() {
-		// TODO getGameStatus()
+		// TODO method getGameStatus()
 		return null;
 	}
 
