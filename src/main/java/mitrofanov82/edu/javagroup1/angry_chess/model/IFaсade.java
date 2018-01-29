@@ -17,22 +17,23 @@ public interface IFaсade {
 	 * The method creates a new game based on the passed parameters. Then it returns
 	 * an object with the current state of the game.
 	 * 
+	 * 
 	 * @param gameId
 	 *            - It takes the value of the <b>ID</b>(<i>long</i>) of the created
 	 *            game. Can throw <b>IdentifierGameException</b> extensible
 	 *            <b>ChessModelException</b> if the transmitted <b>ID</b> already
 	 *            exists.
 	 * @param p1
-	 *            - First player data.
+	 *            - First player, who plays white figures.
 	 * @param p2
-	 *            - Second player data.
+	 *            - Second player, who plays black figures.
 	 * @return - Returns the object, implement <b>IGame</b>, with the current state
 	 *         of the created game.
 	 * @throws -
 	 *             ChessModelException - General model error or error of bad
 	 *             parameters.
 	 */
-	IGame createNewGame(long gameId, IPlayer p1, IPlayer p2) throws ChessModelException;
+	IGame createNewGame(long gameId, IPlayer whitePlayer, IPlayer blackPlayer) throws ChessModelException;
 
 	/**
 	 * The method moves the figure to the given coordinates. If coordinates or the

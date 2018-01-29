@@ -1,49 +1,130 @@
 package mitrofanov82.edu.javagroup1.angry_chess.model.engine;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
+import mitrofanov82.edu.javagroup1.angry_chess.model.engine.utilits.GameData;
+import mitrofanov82.edu.javagroup1.angry_chess.model.engine.utilits.ManagerFiguresUtility;
+import mitrofanov82.edu.javagroup1.angry_chess.model.engine.utilits.RulesModeratorUtility;
+import mitrofanov82.edu.javagroup1.angry_chess.model.exceptions.ChessModelRuntimeException;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.Coord;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.GameStatusType;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.exceptions.ChessModelException;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.exceptions.IncorrectMoveException;
+
+/*
+ * Class done and ready to use.
+ */
 
 /**
  * Class implement model Angry Chess <br>
  * Name engine: "The First" <br>
  * Version engine: 0.1 <br>
  * 
- * @author Ilya Zhukov,  <br>
+ * @author Ilya Zhukov <br>
  */
 public class EngineTheFirst {
 
-	public IGame createNewGame(long gameId, IPlayer p1, IPlayer p2) {
-		// TODO method createNewGame()
-		return null;
+	HashMap<Long, GameData> launchedGames;
+
+	public EngineTheFirst() {
+		this.launchedGames = new HashMap<>();
 	}
 
-	public IGame makeMove(IGame game, Coord from, Coord to) {
-		// TODO method makeMove()
-		return null;
+	public IGame createNewGame(long gameId, IPlayer whitePlayer, IPlayer blackPlayer) throws ChessModelException {
+		// Check if there is such a game
+		if (launchedGames.containsKey(gameId)) {
+			throw new ChessModelException("This ID( " + gameId + " ) is already taken");
+		}
+
+		IGame newGame = new GameData(gameId, whitePlayer, blackPlayer);
+		launchedGames.put(gameId, (GameData) newGame);
+		return newGame;
 	}
 
-	public IGame getGameById(long gameId) {
-		// TODO Auto-generated method stub
-		return null;
+	public IGame makeMove(IGame game, Coord from, Coord to) throws IncorrectMoveException {
+		// Check if there is such a game
+		if (!launchedGames.containsKey(game.getGameId())) {
+			throw new ChessModelRuntimeException("This game (id:" + game.getGameId() + ") does not exist");
+		}
+
+		GameData tempGame = launchedGames.get(game.getGameId());
+		FigureType[][] tempCurrentPosition = tempGame.getCurrentPosition();
+
+		if (RulesModeratorUtility.chekMove(tempCurrentPosition, from, to)) {
+			tempCurrentPosition = ManagerFiguresUtility.makeMove(tempCurrentPosition, from, to);
+			tempGame.setCurrentPosition(tempCurrentPosition);
+			return tempGame;
+
+		} else {
+			throw new IncorrectMoveException("Incorrectly move");
+		}
 	}
 
 	public IGame endGame(IGame game, GameStatusType status) {
-		// TODO method endGame()
-		return null;
+		// Check if there is such a game
+		if (!launchedGames.containsKey(game.getGameId())) {
+			throw new ChessModelRuntimeException("This game (id:" + game.getGameId() + ") does not exist");
+		}
+
+		GameData tempGame = (GameData) game;
+		tempGame.setGameStatus(status);
+
+		if (status == GameStatusType.BLACK_WIN) {
+			tempGame.addRecordToHistoryLog("Status of game to changing on \"Black defeated\"");
+			launchedGames.remove(tempGame.getGameId());
+		}
+		if (status == GameStatusType.WHITE_WIN) {
+			tempGame.addRecordToHistoryLog("Status of game to changing on \"White defeated\"");
+			launchedGames.remove(tempGame.getGameId());
+		}
+		if (status == GameStatusType.END_GAME_NO_RESULT) {
+			tempGame.addRecordToHistoryLog("Status of game to changing on \"End of the game with no result\"");
+			launchedGames.remove(tempGame.getGameId());
+		}
+		if (status == GameStatusType.DRAW) {
+			tempGame.addRecordToHistoryLog("Status of game to changing on \"Draw\"");
+			launchedGames.remove(tempGame.getGameId());
+		}
+
+		return tempGame;
 	}
 
 	public GameStatusType getGameStatus(long gameId) {
-		// TODO method getGameStatusType()
-		return null;
+		if (launchedGames.containsKey(gameId)) {
+			return launchedGames.get(gameId).getGameStatus();
+
+		} else {
+			throw new ChessModelRuntimeException("This game (id:" + gameId + ") does not exist");
+		}
+	}
+
+	public IGame getGameById(long gameId) {
+		if (launchedGames.containsKey(gameId)) {
+			return launchedGames.get(gameId);
+
+		} else {
+			throw new ChessModelRuntimeException("This game (id:" + gameId + ") does not exist");
+		}
 	}
 
 	public List<IGame> getCurrentGames() {
-		// TODO method getCurrentGames
-		return null;
+		if (!launchedGames.isEmpty()) {
+			List<IGame> listGames = new ArrayList<>();
+			Set<Long> keySet = launchedGames.keySet();
+			for (Long key : keySet) {
+				listGames.add(launchedGames.get(key));
+			}
+			return listGames;
+
+		} else {
+			throw new ChessModelRuntimeException("The model does not contain running games");
+		}
 	}
 
 }

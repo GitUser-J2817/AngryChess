@@ -4,18 +4,16 @@ import java.util.List;
 
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
+import mitrofanov82.edu.javagroup1.angry_chess.model.engine.EngineTheFirst;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.Coord;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.GameStatusType;
-
-import mitrofanov82.edu.javagroup1.angry_chess.model.engine.EngineTheFirst;
-
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.exceptions.ChessModelException;
-import mitrofanov82.edu.javagroup1.angry_chess.shared_model.exceptions.IdentifierGameException;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.exceptions.IncorrectMoveException;
 
 /*
  * Class done and ready to use.
  */
+
 /**
  * The class that implements the Angry Chess model management. <br>
  * (current model engine - "The First")
@@ -29,10 +27,10 @@ public class SimpleChessModel implements IFaсade {
 	public SimpleChessModel() {
 		this.model = new EngineTheFirst();
 	}
-	
+
 	@Override
-	public IGame createNewGame(long gameId, IPlayer p1, IPlayer p2) throws IdentifierGameException {
-		return model.createNewGame(gameId, p1, p2);
+	public IGame createNewGame(long gameId, IPlayer whitePlayer, IPlayer blackPlayer) throws ChessModelException {
+		return model.createNewGame(gameId, whitePlayer, blackPlayer);
 	}
 
 	@Override
@@ -48,7 +46,7 @@ public class SimpleChessModel implements IFaсade {
 	public IGame endGame(IGame game, GameStatusType status) {
 		return model.endGame(game, status);
 	}
-	
+
 	@Override
 	public GameStatusType getGameStatus(long gameId) throws ChessModelException {
 		return model.getGameStatus(gameId);
