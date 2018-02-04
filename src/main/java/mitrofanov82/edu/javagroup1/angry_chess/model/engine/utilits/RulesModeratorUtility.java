@@ -2,7 +2,6 @@ package mitrofanov82.edu.javagroup1.angry_chess.model.engine.utilits;
 
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.Coord;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
-import mitrofanov82.edu.javagroup1.angry_chess.shared_model.GameStatusType;
 
 /**
  * Moderator Rules - checks the moves for compliance with the rules and logic of
@@ -22,14 +21,7 @@ public class RulesModeratorUtility {
 		if (!checkPiece(currentGame, from, to)) {
 			return false;
 		}
-
-		if (isCheckmate(currentGame, from, to)) {
-			if (currentGame.getPlayerToMove() == currentGame.getBlackPlayer()) {
-				currentGame.setGameStatus(GameStatusType.BLACK_WIN);
-			} else {
-				currentGame.setGameStatus(GameStatusType.WHITE_WIN);
-			}
-		}
+		
 		return true;
 	}
 
@@ -95,10 +87,4 @@ public class RulesModeratorUtility {
 		// TODO Create method checkMoveKing() in the class RulesModeratorUtility
 		return false;
 	}
-
-	private static boolean isCheckmate(GameData tempGame, Coord from, Coord to) {
-		// TODO Create method isWinMove() in the class RulesModeratorUtility
-		return false;
-	}
-
 }
