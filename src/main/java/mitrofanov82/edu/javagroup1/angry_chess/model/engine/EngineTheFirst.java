@@ -10,7 +10,6 @@ import mitrofanov82.edu.javagroup1.angry_chess.model.engine.utilits.ManagerFigur
 import mitrofanov82.edu.javagroup1.angry_chess.model.engine.utilits.RulesModeratorUtility;
 import mitrofanov82.edu.javagroup1.angry_chess.model.exceptions.ChessModelRuntimeException;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.Coord;
-import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.GameStatusType;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
@@ -53,17 +52,14 @@ public class EngineTheFirst {
 			throw new ChessModelRuntimeException("This game (id:" + game.getGameId() + ") does not exist");
 		}
 
-		GameData tempGame = launchedGames.get(game.getGameId());
-		FigureType[][] tempCurrentPosition = tempGame.getCurrentPosition();
-
-		if (RulesModeratorUtility.chekMove(tempCurrentPosition, from, to)) {
-			tempCurrentPosition = ManagerFiguresUtility.makeMove(tempCurrentPosition, from, to);
-			tempGame.setCurrentPosition(tempCurrentPosition);
-			return tempGame;
-
-		} else {
+		GameData currentGame = launchedGames.get(game.getGameId());
+		if(RulesModeratorUtility.checkMove(currentGame, from, to)) {
+			ManagerFiguresUtility.makeMove(currentGame, from, to);
+			return currentGame;
+		}else {
 			throw new IncorrectMoveException("Incorrectly move");
 		}
+	
 	}
 
 	public IGame endGame(IGame game, GameStatusType status) {
@@ -72,27 +68,27 @@ public class EngineTheFirst {
 			throw new ChessModelRuntimeException("This game (id:" + game.getGameId() + ") does not exist");
 		}
 
-		GameData tempGame = (GameData) game;
-		tempGame.setGameStatus(status);
+		GameData currentGame = (GameData) game;
+		currentGame.setGameStatus(status);
 
 		if (status == GameStatusType.BLACK_WIN) {
-			tempGame.addRecordToHistoryLog("Status of game to changing on \"Black defeated\"");
-			launchedGames.remove(tempGame.getGameId());
+			currentGame.addRecordToHistoryLog("Status of game to changing on \"Black defeated\"");
+			launchedGames.remove(currentGame.getGameId());
 		}
 		if (status == GameStatusType.WHITE_WIN) {
-			tempGame.addRecordToHistoryLog("Status of game to changing on \"White defeated\"");
-			launchedGames.remove(tempGame.getGameId());
+			currentGame.addRecordToHistoryLog("Status of game to changing on \"White defeated\"");
+			launchedGames.remove(currentGame.getGameId());
 		}
 		if (status == GameStatusType.END_GAME_NO_RESULT) {
-			tempGame.addRecordToHistoryLog("Status of game to changing on \"End of the game with no result\"");
-			launchedGames.remove(tempGame.getGameId());
+			currentGame.addRecordToHistoryLog("Status of game to changing on \"End of the game with no result\"");
+			launchedGames.remove(currentGame.getGameId());
 		}
 		if (status == GameStatusType.DRAW) {
-			tempGame.addRecordToHistoryLog("Status of game to changing on \"Draw\"");
-			launchedGames.remove(tempGame.getGameId());
+			currentGame.addRecordToHistoryLog("Status of game to changing on \"Draw\"");
+			launchedGames.remove(currentGame.getGameId());
 		}
 
-		return tempGame;
+		return currentGame;
 	}
 
 	public GameStatusType getGameStatus(long gameId) {

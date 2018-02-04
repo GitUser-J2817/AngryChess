@@ -12,9 +12,8 @@ import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
  */
 public class ManagerFiguresUtility {
 	
-	public static FigureType[][] makeMove(FigureType[][] cheesBoard, Coord from, Coord to){
+	public static void makeMove(GameData tempGame, Coord from, Coord to) {
 		//TODO Create method makeMove() in the class ManagerFiguresUtility;
-		return cheesBoard;
 	}
 	
 	public static FigureType[][] getStartPositions() {
