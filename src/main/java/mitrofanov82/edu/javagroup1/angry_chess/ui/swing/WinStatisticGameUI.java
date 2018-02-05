@@ -1,4 +1,4 @@
-package angrychess.swing.ui;
+package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class StatisticGame extends JFrame {
+public class WinStatisticGameUI extends JFrame {
     private JTable TableStats = new JTable(31,3);
     private JPanel StaticGame = new JPanel();
     private BufferedImage image = null;
@@ -18,7 +18,7 @@ public class StatisticGame extends JFrame {
     private JLabel BackToMenuActionButton = new JLabel(new ImageIcon(ImageBufferedIcon("backActionButton")));
 
 
-    StatisticGame(){
+    WinStatisticGameUI(){
         super("AngryChess - Статистика");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
@@ -54,7 +54,7 @@ public class StatisticGame extends JFrame {
         BackToMenuActionButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new MenuStart().setVisible(true);
+                new WinMenuStartUI().setVisible(true);
                 setVisible(false);
             }
 

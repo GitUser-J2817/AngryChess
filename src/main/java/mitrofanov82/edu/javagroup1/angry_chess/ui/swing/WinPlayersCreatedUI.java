@@ -1,4 +1,4 @@
-package angrychess.swing.ui;
+package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -8,9 +8,10 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import mitrofanov82.edu.javagroup1.angry_chess.ui.swing.CreatedPlayers;
 
 
-public class PlayersCreated extends JFrame{
+public class WinPlayersCreatedUI extends JFrame{
     private JLabel PlayerNameOne = new JLabel("Введите имя игрока (белые): ");
     private JLabel PlayerNamesTwo = new JLabel("Введите имя игрока (черные): ");
     private JLabel NewGameLable = new JLabel(new ImageIcon(ImageBufferedIcon("newGameLogo")));
@@ -26,7 +27,7 @@ public class PlayersCreated extends JFrame{
     private BufferedImage image = null;
 
 
-    PlayersCreated() {
+    WinPlayersCreatedUI() {
         super("AngryChess - New Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
@@ -58,7 +59,7 @@ public class PlayersCreated extends JFrame{
         BackMenuActionButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new MenuStart().setVisible(true);
+                new WinMenuStartUI().setVisible(true);
                 setVisible(false);
             }
 
@@ -118,7 +119,26 @@ public class PlayersCreated extends JFrame{
         StartNewGameActionButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.exit(0);
+                CreatedPlayers Player1;
+                CreatedPlayers Player2;
+                    if (NamePlayerOne.getText().equals("Игрок 1")) {
+                        Player1 = new CreatedPlayers();
+                    } else if (NamePlayerOne.getText().equals("")){
+                        Player1 = new CreatedPlayers();
+                    } else {
+                        Player1 = new CreatedPlayers(NamePlayerOne.getText());
+                    }
+                    if (NamePlayerTwo.getText().equals("Игрок 2")) {
+                        Player2 = new CreatedPlayers();
+                    } else if (NamePlayerTwo.getText().equals("")) {
+                        Player2 = new CreatedPlayers();
+                    } else {
+                        Player2 = new CreatedPlayers(NamePlayerTwo.getText());
+                    }
+
+                WinCreateGameUI WinCreateGame = new WinCreateGameUI(Player1, Player2);
+                WinCreateGame.setVisible(true);
+                setVisible(false);
             }
 
             @Override
@@ -136,7 +156,7 @@ public class PlayersCreated extends JFrame{
     }
 
     private BufferedImage ImageBufferedIcon (String name){
-        String Path = "resources/";
+        String Path = "./src/main/resources/";
         if (name.equals("newGameLogo")){
             Path += "new_game_logo.jpg";
         }else if (name.equals("backMenu")){

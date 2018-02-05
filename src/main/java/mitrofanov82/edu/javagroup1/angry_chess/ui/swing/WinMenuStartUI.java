@@ -1,4 +1,4 @@
-package angrychess.swing.ui;
+package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class MenuStart extends JFrame{
+public class WinMenuStartUI extends JFrame{
         private JPanel NameAngrys = new JPanel();
         private BufferedImage image = null;
         private JLabel logoAngry = new JLabel(new ImageIcon(ImageBufferedIcon("angry")));
@@ -20,7 +20,7 @@ public class MenuStart extends JFrame{
         private JLabel gameExit = new JLabel(new ImageIcon(ImageBufferedIcon("exitGame")));
         private JLabel exitGameAction = new JLabel(new ImageIcon(ImageBufferedIcon("exitAction")));
 
-    MenuStart(){
+    WinMenuStartUI(){
         super("AngryChess");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
@@ -57,8 +57,8 @@ public class MenuStart extends JFrame{
         newGameActionImg.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                PlayersCreated CreatedPlayers = new PlayersCreated();
-                CreatedPlayers.setVisible(true);
+                WinPlayersCreatedUI WinCreatedPlayers = new WinPlayersCreatedUI();
+                WinCreatedPlayers.setVisible(true);
                 setVisible(false);
             }
 
@@ -88,7 +88,7 @@ public class MenuStart extends JFrame{
         statisticGameAction.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                StatisticGame Statistics = new StatisticGame();
+                WinStatisticGameUI Statistics = new WinStatisticGameUI();
                 Statistics.setVisible(true);
                 setVisible(false);
             }
@@ -139,7 +139,8 @@ public class MenuStart extends JFrame{
     }
 
     private BufferedImage ImageBufferedIcon (String name){
-        String Path = "resources/";
+        String Path = "./src/main/resources/";
+
         if (name.equals("angry")){
             Path += "angry.jpg";
         }else if (name.equals("chess")){
