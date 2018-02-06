@@ -6,7 +6,7 @@ import static java.lang.Math.*;
 
 public class CreatedPlayers  implements IPlayer{
     private int randomName = (int)(Math.random()*1000);
-    private String Name = "noname" + randomName;
+    private String Name = "Noname" + randomName;
     private int Rating = 0;
 
     CreatedPlayers(){
@@ -16,6 +16,7 @@ public class CreatedPlayers  implements IPlayer{
 
     CreatedPlayers (String Name){
         this.Name = Name;
+        this.Rating = Rating;
     }
 
 

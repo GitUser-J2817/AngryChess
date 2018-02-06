@@ -28,7 +28,7 @@ public class WinPlayersCreatedUI extends JFrame{
 
 
     WinPlayersCreatedUI() {
-        super("AngryChess - New Game");
+        super("AngryChess - Created NEW GAME");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
         setLocationRelativeTo(null);
@@ -168,7 +168,7 @@ public class WinPlayersCreatedUI extends JFrame{
         }else if (name.equals("goingAction")){
             Path += "going_action.jpg";
         }else if (name.equals("avatar")){
-            Path += "blank_avatar.jpg";
+            Path += "blank_avatar.png";
         }
 
         try {

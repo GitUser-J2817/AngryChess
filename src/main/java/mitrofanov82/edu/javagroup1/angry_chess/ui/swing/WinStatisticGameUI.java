@@ -74,7 +74,7 @@ public class WinStatisticGameUI extends JFrame {
 
 
     private BufferedImage ImageBufferedIcon (String name){
-        String Path = "resources/";
+        String Path = "./src/main/resources/";
         if (name.equals("staticLogo")){
             Path += "statistic_logo.jpg";
         }else if (name.equals("backButton")){
