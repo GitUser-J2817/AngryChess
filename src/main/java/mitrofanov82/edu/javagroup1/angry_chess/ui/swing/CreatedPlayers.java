@@ -16,7 +16,6 @@ public class CreatedPlayers  implements IPlayer{
 
     CreatedPlayers (String Name){
         this.Name = Name;
-        Rating = this.Rating;
     }
 
 
