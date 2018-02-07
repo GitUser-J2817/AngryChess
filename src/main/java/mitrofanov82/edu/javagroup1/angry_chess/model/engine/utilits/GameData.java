@@ -24,9 +24,9 @@ public class GameData implements IGame {
 	private IPlayer blackPlayer;
 	private IPlayer playerToMove;
 	private ArrayList<String> historyLog;
-	FigureType[][] currentPosition;
-	GameStatusType gameStatus;
-	long id;
+	private FigureType[][] currentPosition;
+	private GameStatusType gameStatus;
+	private long id;
 
 	// Constructors
 	/**
