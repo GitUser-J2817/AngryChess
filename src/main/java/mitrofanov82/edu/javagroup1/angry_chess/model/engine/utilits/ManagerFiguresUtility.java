@@ -2,6 +2,7 @@ package mitrofanov82.edu.javagroup1.angry_chess.model.engine.utilits;
 
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.Coord;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
+import mitrofanov82.edu.javagroup1.angry_chess.shared_model.exceptions.IncorrectMoveException;
 
 /**
  * Manager figures on the board. <br>
@@ -12,8 +13,9 @@ import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
  */
 public class ManagerFiguresUtility {
 	
-	public static void makeMove(GameData tempGame, Coord from, Coord to) {
+	public static GameData makeMove(GameData game, Coord from, Coord to) throws IncorrectMoveException {
 		//TODO Create method makeMove() in the class ManagerFiguresUtility;
+		return game;
 	}
 	
 	public static FigureType[][] getStartPositions() {
