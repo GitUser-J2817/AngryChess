@@ -46,6 +46,7 @@ public class GameData implements IGame {
 		this.playerToMove = whitePlayer;
 		this.gameStatus = GameStatusType.IN_PROGRESS;
 		this.currentPosition = ManagerFiguresUtility.getStartPositions();
+		historyLog = new ArrayList<>();
 	}
 
 	// Setters
@@ -72,7 +73,6 @@ public class GameData implements IGame {
 		tempArrayStrings.add(lastMove);
 		tempArrayStrings.addAll(historyLog);
 		this.historyLog = tempArrayStrings;
-		tempArrayStrings = null;
 	}
 
 	// Getters
