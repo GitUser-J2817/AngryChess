@@ -2,7 +2,7 @@ package tests_from_model;
 
 import java.util.ArrayList;
 
-import mitrofanov82.edu.javagroup1.angry_chess.model.SimpleChessModel;
+import mitrofanov82.edu.javagroup1.angry_chess.model.ChessModelAPI;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.Coord;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
@@ -25,7 +25,7 @@ public class TestsModel {
 	 * Smoke-test for the model
 	 */
 	private static boolean smokeTest() {
-		SimpleChessModel scm = new SimpleChessModel();
+		ChessModelAPI scm = new ChessModelAPI();
 		IPlayer p1 = new TSMPlayer("Player1");
 		IPlayer p2 = new TSMPlayer("Player2");
 		IGame game = null;
@@ -60,7 +60,7 @@ public class TestsModel {
 	 * Test for working off incorrect data
 	 */
 	private static boolean test1() {
-		SimpleChessModel scm = new SimpleChessModel();
+		ChessModelAPI scm = new ChessModelAPI();
 		IPlayer p1 = new TSMPlayer("Player1");
 		IPlayer p2 = new TSMPlayer("Player2");
 		IGame game = null, game2 = null;

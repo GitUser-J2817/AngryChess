@@ -21,10 +21,10 @@ import mitrofanov82.edu.javagroup1.angry_chess.shared_model.exceptions.Incorrect
  * @author Ilya Zhukov
  *
  */
-public class SimpleChessModel implements IFaсade {
+public class ChessModelAPI implements IFaсade {
 	private EngineTheFirst model;
 
-	public SimpleChessModel() {
+	public ChessModelAPI() {
 		this.model = new EngineTheFirst();
 	}
 
