@@ -14,7 +14,12 @@ import mitrofanov82.edu.javagroup1.angry_chess.shared_model.exceptions.Incorrect
 public class ManagerFiguresUtility {
 	
 	public static GameData makeMove(GameData game, Coord from, Coord to) throws IncorrectMoveException {
-		//TODO Create method makeMove() in the class ManagerFiguresUtility;
+		FigureType[][] board = game.getCurrentPosition();
+		FigureType fromPosition = board[from.getRow()][from.getCol()];
+		board[to.getRow()][to.getCol()]=fromPosition;
+		board[from.getRow()][from.getCol()]=null;
+		game.setCurrentPosition(board);
+		game.addRecordToHistoryLog("Move:"+from+" >>> "+to);
 		return game;
 	}
 	

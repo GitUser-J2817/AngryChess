@@ -26,6 +26,11 @@ public class RulesModeratorUtility {
 	}
 
 	private static boolean checkAdequacy(GameData currentGame, Coord from, Coord to) {
+		FigureType[][] board = currentGame.getCurrentPosition();
+		FigureType stepFrom = board[from.getRow()][from.getCol()];
+		FigureType stepTo=board[to.getRow()][to.getCol()];
+		//if(stepTo=null || stepFrom.)
+		
 		// TODO Create method checkLogic() in the class RulesModeratorUtility
 		// from piece = null
 		// "from" and "to" a pieces is one color

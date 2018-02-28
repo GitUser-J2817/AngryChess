@@ -55,7 +55,7 @@ public class EngineTheFirst {
 		GameData currentGame = launchedGames.get(game.getGameId());
 		if(RulesModeratorUtility.checkMove(currentGame, from, to)) {
 			currentGame = ManagerFiguresUtility.makeMove(currentGame, from, to);
-			//currentGame.addRecordToHistoryLog("Move:"+from+" >>> "+to);//FIXME for test
+			
 			return currentGame;
 		}else {
 			throw new IncorrectMoveException("Incorrectly move");
