@@ -2,31 +2,29 @@ package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
 
-import static java.lang.Math.*;
-
 public class CreatedPlayers  implements IPlayer{
     private int randomName = (int)(Math.random()*1000);
-    private String Name = "Noname" + randomName;
-    private int Rating = 0;
+    private String name = "Noname" + randomName;
+    private int rating = 0;
 
     CreatedPlayers(){
-        Name = this.Name;
-        Rating = this.Rating;
+        name = this.name;
+        rating = this.rating;
     }
 
     CreatedPlayers (String Name){
-        this.Name = Name;
-        this.Rating = Rating;
+        this.name = Name;
+        this.rating = rating;
     }
 
 
     @Override
     public String getName() {
-        return Name;
+        return name;
     }
 
     @Override
     public int getRating() {
-        return Rating;
+        return rating;
     }
 }

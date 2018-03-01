@@ -25,14 +25,15 @@ public class WinMenuStartUI extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
         setLocationRelativeTo(null);
-        setResizable(false);
+        setResizable(true);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLayout(null);
         setVisible(true);
 
         //Общая область для прилипания
         add(NameAngrys);
         NameAngrys.setSize(800,600);
-        NameAngrys.setLocation(0,0);
+        //NameAngrys.setLocation(0,0);
         NameAngrys.setBackground(Color.white);
         NameAngrys.setLayout(null);
 

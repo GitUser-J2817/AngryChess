@@ -1,5 +1,7 @@
 package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
+import mitrofanov82.edu.javagroup1.angry_chess.model.ModelFacade;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;

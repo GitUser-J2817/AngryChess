@@ -8,7 +8,6 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import mitrofanov82.edu.javagroup1.angry_chess.ui.swing.CreatedPlayers;
 
 
 public class WinPlayersCreatedUI extends JFrame{
@@ -32,7 +31,7 @@ public class WinPlayersCreatedUI extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
         setLocationRelativeTo(null);
-        setResizable(false);
+        setResizable(true);
         setLayout(null);
 
 
