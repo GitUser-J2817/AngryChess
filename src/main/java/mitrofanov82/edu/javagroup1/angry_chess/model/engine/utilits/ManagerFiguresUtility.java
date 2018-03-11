@@ -40,20 +40,21 @@ public class ManagerFiguresUtility {
     public static FigureType[][] getStartPositions() {
         FigureType[][] startPositions = {
                 { FigureType.WHITE_ROOK, FigureType.WHITE_KNIGHT, FigureType.WHITE_BISHOP, FigureType.WHITE_QUEEN,
-                  FigureType.WHITE_KING, FigureType.WHITE_BISHOP, FigureType.WHITE_KNIGHT, FigureType.WHITE_ROOK },
-                
+                        FigureType.WHITE_KING, FigureType.WHITE_BISHOP, FigureType.WHITE_KNIGHT,
+                        FigureType.WHITE_ROOK },
+
                 { FigureType.WHITE_PAWN, FigureType.WHITE_PAWN, FigureType.WHITE_PAWN, FigureType.WHITE_PAWN,
-                  FigureType.WHITE_PAWN, FigureType.WHITE_PAWN, FigureType.WHITE_PAWN, FigureType.WHITE_PAWN },
-                
+                        FigureType.WHITE_PAWN, FigureType.WHITE_PAWN, FigureType.WHITE_PAWN, FigureType.WHITE_PAWN },
+
                 { null, null, null, null, null, null, null, null }, { null, null, null, null, null, null, null, null },
                 { null, null, null, null, null, null, null, null }, { null, null, null, null, null, null, null, null },
-                
+
                 { FigureType.BLACK_PAWN, FigureType.BLACK_PAWN, FigureType.BLACK_PAWN, FigureType.BLACK_PAWN,
-                  FigureType.BLACK_PAWN, FigureType.BLACK_PAWN, FigureType.BLACK_PAWN, FigureType.BLACK_PAWN },
-                
+                        FigureType.BLACK_PAWN, FigureType.BLACK_PAWN, FigureType.BLACK_PAWN, FigureType.BLACK_PAWN },
+
                 { FigureType.BLACK_ROOK, FigureType.BLACK_KNIGHT, FigureType.BLACK_BISHOP, FigureType.BLACK_QUEEN,
-                  FigureType.BLACK_KING, FigureType.BLACK_BISHOP, FigureType.BLACK_KNIGHT, FigureType.BLACK_ROOK }
-                };
+                        FigureType.BLACK_KING, FigureType.BLACK_BISHOP, FigureType.BLACK_KNIGHT,
+                        FigureType.BLACK_ROOK } };
         return startPositions;
     }
 }
