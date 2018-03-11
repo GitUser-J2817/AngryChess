@@ -32,9 +32,9 @@ public class ChessPersistence implements IChessPersistenceAPI {
     /**
      * The Constructor saves all the results of the games into memory
      */
-    public ChessPersistence () {
+    public ChessPersistence() {
         BufferedReader reader = readerCreator();
-        
+
         try {
             while (reader.ready()) {
                 String[] history = reader.readLine().split(",");
@@ -50,6 +50,8 @@ public class ChessPersistence implements IChessPersistenceAPI {
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
     }
 
@@ -57,20 +59,29 @@ public class ChessPersistence implements IChessPersistenceAPI {
         IPlayer whitePLayer = game.getWhitePlayer();
         IPlayer blackPLayer = game.getBlackPlayer();
         GameStatusType winner = game.getGameStatus();
-        
+
         int whiteIncrement = winner.equals(GameStatusType.WHITE_WIN) ? 1 : 0;
         int blackIncrement = winner.equals(GameStatusType.BLACK_WIN) ? 1 : 0;
-
-        BufferedWriter writer = writerCreator();
 
         String toWrite = game.getGameId() + "," + winner + "," + whitePLayer.getName() + ","
                 + (whitePLayer.getRating() + whiteIncrement) + "," + blackPLayer.getName() + ","
                 + (blackPLayer.getRating() + blackIncrement);
+
+        BufferedWriter bufferedWriter = null;
         try {
-            writer.write(toWrite + "\n");
-            writer.close();
+            File file = new File(path);
+            Writer writer = new FileWriter(file, true);
+            bufferedWriter = new BufferedWriter(writer);
+            
+            bufferedWriter.write(toWrite + "\n");
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (bufferedWriter != null) bufferedWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -114,7 +125,7 @@ public class ChessPersistence implements IChessPersistenceAPI {
         }
         return new ArrayList<IPlayer>(players);
     }
-    
+
     private BufferedReader readerCreator() {
         BufferedReader bufferedReader = null;
         try {
@@ -124,17 +135,5 @@ public class ChessPersistence implements IChessPersistenceAPI {
             e.printStackTrace();
         }
         return bufferedReader;
-    }
-    
-    private BufferedWriter writerCreator() {
-        File file = new File(path);
-
-        Writer writer = null;
-        try {
-            writer = new FileWriter(file, true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return new BufferedWriter(writer);
     }
 }
