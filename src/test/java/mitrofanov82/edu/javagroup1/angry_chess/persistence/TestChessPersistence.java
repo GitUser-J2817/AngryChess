@@ -1,4 +1,4 @@
-package mitrofanov82.edu.javagroup1.angry_chess.launcher;
+package mitrofanov82.edu.javagroup1.angry_chess.persistence;
 
 import java.util.List;
 
@@ -6,12 +6,16 @@ import mitrofanov82.edu.javagroup1.angry_chess.persistence.IChessPersistenceAPI;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
 
-public class ChessPersistence implements IChessPersistenceAPI {
+public class TestChessPersistence implements IChessPersistenceAPI {
+
+    public TestChessPersistence(){
+        
+    }
 
     @Override
     public void saveGameResults(IGame game) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
