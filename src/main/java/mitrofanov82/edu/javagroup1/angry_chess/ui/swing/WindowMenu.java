@@ -1,4 +1,4 @@
-package mitrofanov82.edu.javagroup1.angry_chess.ui;
+package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -8,8 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import mitrofanov82.edu.javagroup1.angry_chess.ui.swing.ImagesUtils;
 
 public class WindowMenu extends JFrame {
     private JPanel spaceWindow = new JPanel();

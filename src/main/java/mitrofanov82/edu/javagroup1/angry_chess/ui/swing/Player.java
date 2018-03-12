@@ -2,14 +2,15 @@ package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
 
-public class CreatedPlayers implements IPlayer {
-    private String name = "Noname" + (int) (Math.random() * 1000);
+public class Player implements IPlayer {
+    private String name = "";
     private int rating = 0;
-
-    public CreatedPlayers() {
+    
+    public Player() {
+        
     }
 
-    public CreatedPlayers(String name) {
+    public Player(String name) {
         this.name = name;
     }
 

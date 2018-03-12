@@ -3,7 +3,7 @@ package mitrofanov82.edu.javagroup1.angry_chess.launcher;
 import mitrofanov82.edu.javagroup1.angry_chess.model.ChessModel;
 import mitrofanov82.edu.javagroup1.angry_chess.model.ChessModelAPI;
 import mitrofanov82.edu.javagroup1.angry_chess.persistence.IChessPersistenceAPI;
-import mitrofanov82.edu.javagroup1.angry_chess.ui.SwingUI;
+import mitrofanov82.edu.javagroup1.angry_chess.ui.swing.SwingUI;
 
 public class Launcher {
 

@@ -1,4 +1,4 @@
-package mitrofanov82.edu.javagroup1.angry_chess.ui;
+package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -9,9 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import mitrofanov82.edu.javagroup1.angry_chess.ui.swing.CreatedPlayers;
-import mitrofanov82.edu.javagroup1.angry_chess.ui.swing.ImagesUtils;
 
 public class WindowPlayers extends JFrame {
     private JPanel spaceWindow = new JPanel();
@@ -135,22 +132,8 @@ public class WindowPlayers extends JFrame {
     private class ActionOnNewGameButton extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
-            CreatedPlayers Player1;
-            CreatedPlayers Player2;
-            if (namePlayerOne.getText().equals("Игрок 1")) {
-                Player1 = new CreatedPlayers();
-            } else if (namePlayerOne.getText().equals("")) {
-                Player1 = new CreatedPlayers();
-            } else {
-                Player1 = new CreatedPlayers(namePlayerOne.getText());
-            }
-            if (namePlayerTwo.getText().equals("Игрок 2")) {
-                Player2 = new CreatedPlayers();
-            } else if (namePlayerTwo.getText().equals("")) {
-                Player2 = new CreatedPlayers();
-            } else {
-                Player2 = new CreatedPlayers(namePlayerTwo.getText());
-            }
+            Player Player1 = new Player(namePlayerOne.getText());
+            Player Player2 = new Player(namePlayerTwo.getText());
             controler.callWindowGame(Player1, Player2);
             windowPlayers.setVisible(false);
         }
