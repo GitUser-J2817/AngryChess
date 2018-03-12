@@ -1,8 +1,9 @@
 package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
-public class WinUITest {
+public class GameAPI {
 
-    public static void main(String args[]) {
+    public static void GameAPI() {
         new WinMenuStartUI();
     }
+
 }

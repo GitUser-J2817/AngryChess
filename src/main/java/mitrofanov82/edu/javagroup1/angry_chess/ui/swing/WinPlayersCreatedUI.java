@@ -1,29 +1,28 @@
 package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+
+
 
 
 public class WinPlayersCreatedUI extends JFrame{
     private JLabel PlayerNameOne = new JLabel("Введите имя игрока (белые): ");
     private JLabel PlayerNamesTwo = new JLabel("Введите имя игрока (черные): ");
-    private JLabel NewGameLable = new JLabel(new ImageIcon(ImageBufferedIcon("newGameLogo")));
-    private JLabel StartNewGameButton = new JLabel(new ImageIcon(ImageBufferedIcon("going")));
-    private JLabel StartNewGameActionButton = new JLabel(new ImageIcon(ImageBufferedIcon("goingAction")));
-    private JLabel BackMenuButton = new JLabel(new ImageIcon(ImageBufferedIcon("backMenu")));
-    private JLabel BackMenuActionButton = new JLabel(new ImageIcon(ImageBufferedIcon("backMenuAction")));
-    private JLabel avatarPlayerOne = new JLabel(new ImageIcon(ImageBufferedIcon("avatar")));
-    private JLabel avatarPlayerTwo = new JLabel(new ImageIcon(ImageBufferedIcon("avatar")));
+    private JLabel NewGameLable = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("newGameLogo")));
+    private JLabel StartNewGameButton = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("going")));
+    private JLabel StartNewGameActionButton = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("goingAction")));
+    private JLabel BackMenuButton = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("backMenu")));
+    private JLabel BackMenuActionButton = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("backMenuAction")));
+    private JLabel avatarPlayerOne = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("avatar")));
+    private JLabel avatarPlayerTwo = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("avatar")));
     private JTextField NamePlayerOne = new JTextField("Игрок 1",25);
     private JTextField NamePlayerTwo = new JTextField("Игрок 2", 50);
     private JPanel WinPlayers = new JPanel();
-    private BufferedImage image = null;
+
 
 
     WinPlayersCreatedUI() {
@@ -152,30 +151,5 @@ public class WinPlayersCreatedUI extends JFrame{
                 StartNewGameButton.setVisible(false);
             }
         });
-    }
-
-    private BufferedImage ImageBufferedIcon (String name){
-        String Path = "./src/main/resources/";
-        if (name.equals("newGameLogo")){
-            Path += "new_game_logo.jpg";
-        }else if (name.equals("backMenu")){
-            Path += "back.jpg";
-        }else if (name.equals("backMenuAction")){
-            Path += "back_action.jpg";
-        }else if (name.equals("going")){
-            Path += "going.jpg";
-        }else if (name.equals("goingAction")){
-            Path += "going_action.jpg";
-        }else if (name.equals("avatar")){
-            Path += "blank_avatar.png";
-        }
-
-        try {
-            image = ImageIO.read(new File(Path));
-            return image;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

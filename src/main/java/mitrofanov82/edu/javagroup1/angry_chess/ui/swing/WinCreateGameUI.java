@@ -1,27 +1,17 @@
 package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
-import mitrofanov82.edu.javagroup1.angry_chess.model.ModelFacade;
-import mitrofanov82.edu.javagroup1.angry_chess.shared_model.Coord;
-import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
 
 public class WinCreateGameUI extends JFrame {
     private JLabel nameWhite = new JLabel();
     private JLabel nameBlack = new JLabel();
-    private JLabel BackgroundChessboard = new JLabel(
-            new ImageIcon("D:\\Java\\AngryChess\\src\\main\\resources\\backgroundChessBoard.jpg"));
-    private JLabel AvatarWhitePlayer = new JLabel(new ImageIcon(ImageBufferedIcon("avatarWhite")));
-    private JLabel AvatarBlackPlayer = new JLabel(new ImageIcon(ImageBufferedIcon("avatarBlack")));
+    private JLabel BackgroundChessboard = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("backgroundChessBoard.jpg")));
+    private JLabel AvatarWhitePlayer = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("avatarWhite")));
+    private JLabel AvatarBlackPlayer = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("avatarBlack")));
     private JTextArea LogChat = new JTextArea(9000, 20);
     private JButton BackMenuWhite = new JButton("Сдаться");
     private JButton BackMenuBlack = new JButton("Сдаться");
@@ -33,13 +23,11 @@ public class WinCreateGameUI extends JFrame {
     private JPanel WinGameBlackPlayerPanel = new JPanel();
     private JPanel WinGameChessboardPanel = new JPanel();
     private JPanel GlassBoard = new JPanel();
-    private BufferedImage image = null;
     private Border etched = BorderFactory.createEtchedBorder();
     private Border titled = BorderFactory.createTitledBorder(etched);
-    String text = "<html>1<br><br><br><br>2<br><br><br><br>3<br><br><br><br>4<br><br><br><br>5<br><br><br><br>6<br><br><br><br>7<br><br><br><br>8</html>";
+    private String text = "<html>1<br><br><br><br>2<br><br><br><br>3<br><br><br><br>4<br><br><br><br>5<br><br><br><br>6<br><br><br><br>7<br><br><br><br>8</html>";
     private final JLabel BoardNumbRight = new JLabel(text);
     private final JMenuBar menuBar = new JMenuBar();
-
 
     WinCreateGameUI(CreatedPlayers Player1, CreatedPlayers Player2) {
         super("Game: " + Player1.getName() + " VS " + Player2.getName());
@@ -47,7 +35,7 @@ public class WinCreateGameUI extends JFrame {
         setSize(800, 640);
         setMinimumSize(new Dimension(800, 600));
         setLocationRelativeTo(null);
-        setResizable(true);
+        setResizable(false);
         getContentPane().setLayout(null);
 
         // Panel Chessboard
@@ -57,51 +45,11 @@ public class WinCreateGameUI extends JFrame {
         WinGameChessboardPanel.setLocation(170, 0);
         WinGameChessboardPanel.setSize(630, 610);
         GlassBoard.setOpaque(false);
-
-
         WinGameChessboardPanel.add(new ParsNowBoard());
-        /*ChessBoard.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent event) {
-                Object[] options = {"Да", "Нет!"};
-                int n = JOptionPane.showOptionDialog(WinCreateGameUI.this, "Ты точно нажал что-то?",
-                        "Это провал! Сработало или нет?!:)", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
-                        options[0]);
-                if (n == 0) {
-                    if (event.getX() < 63 && event.getY() < 63) {
-                        JOptionPane.showMessageDialog(WinCreateGameUI.this,
-                                "Крутец, ты нажал на А-1 \n\r" +
-                                         "x: " + event.getX() + "\n\r" +
-                                            "y: " + event.getY());
-                    }else if(event.getX()>63 && event.getX()<123 && event.getY()<63){
-                        JOptionPane.showMessageDialog(WinCreateGameUI.this,
-                                "Крутец, ты нажал на B-1 \n\r" +
-                                        "x: " + event.getX() + "\n\r" +
-                                        "y: " + event.getY());
-                    }
-                }
-            }
-
-            @Override
-            public void mousePressed(MouseEvent event) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent event) {
-            }
-
-        });
-        ChessBoard.setOpaque(false);
-        ChessBoard.setBounds(58, 49, 500, 500);
-        WinGameChessboardPanel.add(ChessBoard);
-        ChessBoard.setLayout(null);*/
-
-
         JPanel FullBoard = new JPanel();
         FullBoard.setLayout(null);
         FullBoard.setBounds(36, 28, 544, 542);
         WinGameChessboardPanel.add(FullBoard);
-
         JLabel BoardABCtop = new JLabel(
                 "                  A                  B                  C                  D                  E                  F                  G                  H");
         BoardABCtop.setBounds(0, 0, 544, 21);
@@ -157,8 +105,7 @@ public class WinCreateGameUI extends JFrame {
         HitWhite.setSize(120, 30);
         HitWhite.setLocation(25, 200);
         HitWhite.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
+            @Override public void mouseClicked(MouseEvent e) {
                 WinGameWhitePlayerPanel.setVisible(false);
                 WinGameChessboardPanel.setLocation(0, 0);
                 WinGameChessboardPanel.setBackground(Color.black);
@@ -173,17 +120,16 @@ public class WinCreateGameUI extends JFrame {
 
         WinGameWhitePlayerPanel.add(BackMenuWhite);
         BackMenuWhite.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                Object[] options = {"Да", "Нет!"};
+            @Override public void mouseClicked(MouseEvent e) {
+                Object[] options = { "Да", "Нет!" };
                 int n = JOptionPane.showOptionDialog(WinCreateGameUI.this, "Ты уверен, что хочешь сдаться?",
                         "Это провал! Сдаешься?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
                         options[0]);
                 if (n == 0) {
                     JOptionPane.showMessageDialog(WinCreateGameUI.this,
-                            "" + Player1.getName() + " проиграл!\n\r" + "Черные выиграли!\n\r" + "Рейтинг "
-                                    + Player1.getName() + " : " + (Player1.getRating() - 1) + "\n\r" + "Рейтинг "
-                                    + Player2.getName() + " : " + (Player2.getRating() + 1));
+                            "" + Player1.getName() + " проиграл!\n\r" + "Черные выиграли!\n\r" + "Рейтинг " + Player1
+                                    .getName() + " : " + (Player1.getRating() - 1) + "\n\r" + "Рейтинг " + Player2
+                                    .getName() + " : " + (Player2.getRating() + 1));
                     new WinMenuStartUI().setVisible(true);
                     setVisible(false);
                 }
@@ -212,8 +158,7 @@ public class WinCreateGameUI extends JFrame {
         HitBlack.setSize(120, 30);
         HitBlack.setLocation(25, 200);
         HitBlack.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
+            @Override public void mouseClicked(MouseEvent e) {
                 WinGameWhitePlayerPanel.setVisible(true);
                 WinGameChessboardPanel.setLocation(170, 0);
                 WinGameChessboardPanel.setBackground(Color.lightGray);
@@ -228,17 +173,16 @@ public class WinCreateGameUI extends JFrame {
 
         WinGameBlackPlayerPanel.add(BackMenuBlack);
         BackMenuBlack.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                Object[] options = {"Да", "Нет!"};
+            @Override public void mouseClicked(MouseEvent e) {
+                Object[] options = { "Да", "Нет!" };
                 int n = JOptionPane.showOptionDialog(WinCreateGameUI.this, "Ты уверен, что хочешь сдаться?",
                         "Это провал! Сдаешься?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
                         options[0]);
                 if (n == 0) {
                     JOptionPane.showMessageDialog(WinCreateGameUI.this,
-                            "" + Player2.getName() + " проиграл!\n\r" + "Черные выиграли!\n\r" + "Рейтинг "
-                                    + Player2.getName() + " : " + (Player1.getRating() - 1) + "\n\r" + "Рейтинг "
-                                    + Player1.getName() + " : " + (Player2.getRating() + 1));
+                            "" + Player2.getName() + " проиграл!\n\r" + "Белые выиграли!\n\r" + "Рейтинг " + Player2
+                                    .getName() + " : " + (Player2.getRating() - 1) + "\n\r" + "Рейтинг " + Player1
+                                    .getName() + " : " + (Player1.getRating() + 1));
                     new WinMenuStartUI().setVisible(true);
                     setVisible(false);
                 }
@@ -270,31 +214,11 @@ public class WinCreateGameUI extends JFrame {
         menu_1.add(menuItem_2);
         JMenuItem menuItem_6 = new JMenuItem("Выход");
         menuItem_6.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
+            @Override public void mouseClicked(MouseEvent e) {
                 System.exit(0);
             }
         });
         menu.add(menuItem_6);
     }
-
-    private BufferedImage ImageBufferedIcon(String name) {
-        String Path = "./src/main/resources/";
-        if (name.equals("backgroundChessBoard.jpg")) {
-            Path += "backgroundChessBoard.jpg";
-        } else if (name.equals("avatarWhite")) {
-            Path += "whitePlayer.png";
-        } else if (name.equals("avatarBlack")) {
-            Path += "blackPlayer.png";
-        }
-        try {
-            image = ImageIO.read(new File(Path));
-            return image;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
 
 }

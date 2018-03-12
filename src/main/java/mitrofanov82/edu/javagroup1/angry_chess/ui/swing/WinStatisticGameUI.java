@@ -2,22 +2,18 @@ package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
 import mitrofanov82.edu.javagroup1.angry_chess.model.ModelFacade;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+
 
 public class WinStatisticGameUI extends JFrame {
     private JTable TableStats = new JTable(31,3);
     private JPanel StaticGame = new JPanel();
-    private BufferedImage image = null;
-    private JLabel LogoStatistic = new JLabel(new ImageIcon(ImageBufferedIcon("staticLogo")));
-    private JLabel BackToMenuButton = new JLabel(new ImageIcon(ImageBufferedIcon("backButton")));
-    private JLabel BackToMenuActionButton = new JLabel(new ImageIcon(ImageBufferedIcon("backActionButton")));
+    private JLabel LogoStatistic = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("staticLogo")));
+    private JLabel BackToMenuButton = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("backButton")));
+    private JLabel BackToMenuActionButton = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("backActionButton")));
 
 
     WinStatisticGameUI(){
@@ -72,24 +68,5 @@ public class WinStatisticGameUI extends JFrame {
                 BackToMenuButton.setVisible(false);
             }
         });
-    }
-
-
-    private BufferedImage ImageBufferedIcon (String name){
-        String Path = "./src/main/resources/";
-        if (name.equals("staticLogo")){
-            Path += "statistic_logo.jpg";
-        }else if (name.equals("backButton")){
-            Path += "back.jpg";
-        }else if (name.equals("backActionButton")){
-            Path += "back_action.jpg";
-        }
-        try {
-            image = ImageIO.read(new File(Path));
-            return image;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

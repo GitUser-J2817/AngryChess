@@ -1,24 +1,22 @@
 package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+
 
 public class WinMenuStartUI extends JFrame{
         private JPanel NameAngrys = new JPanel();
-        private BufferedImage image = null;
-        private JLabel logoAngry = new JLabel(new ImageIcon(ImageBufferedIcon("angry")));
-        private JLabel logoChess = new JLabel(new ImageIcon(ImageBufferedIcon("chess")));
-        private JLabel newGameImg = new JLabel(new ImageIcon(ImageBufferedIcon("newGame")));
-        private JLabel newGameActionImg = new JLabel(new ImageIcon(ImageBufferedIcon("newGameAction")));
-        private JLabel statisticGame = new JLabel(new ImageIcon(ImageBufferedIcon("statistic")));
-        private JLabel statisticGameAction = new JLabel(new ImageIcon(ImageBufferedIcon("statisticAction")));
-        private JLabel gameExit = new JLabel(new ImageIcon(ImageBufferedIcon("exitGame")));
-        private JLabel exitGameAction = new JLabel(new ImageIcon(ImageBufferedIcon("exitAction")));
+        private JLabel logoAngry = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("angry")));
+        private JLabel logoChess = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("chess")));
+        private JLabel newGameImg = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("newGame")));
+        private JLabel newGameActionImg = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("newGameAction")));
+        private JLabel statisticGame = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("statistic")));
+        private JLabel statisticGameAction = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("statisticAction")));
+        private JLabel gameExit = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("exitGame")));
+        private JLabel exitGameAction = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("exitAction")));
 
     WinMenuStartUI(){
         super("AngryChess");
@@ -137,34 +135,5 @@ public class WinMenuStartUI extends JFrame{
             }
         });
 
-    }
-
-    private BufferedImage ImageBufferedIcon (String name){
-        String Path = "./src/main/resources/";
-
-        if (name.equals("angry")){
-            Path += "angry.jpg";
-        }else if (name.equals("chess")){
-            Path += "chess.jpg";
-        }else if (name.equals("newGame")){
-            Path += "new_game.jpg";
-        }else if (name.equals("newGameAction")){
-            Path += "new_game_action.jpg";
-        }else if (name.equals("statistic")){
-            Path += "statistic.jpg";
-        }else if (name.equals("statisticAction")){
-            Path += "statistic_action.jpg";
-        }else if (name.equals("exitGame")){
-            Path += "exit.jpg";
-        }else if (name.equals("exitAction")){
-            Path += "exit_action.jpg";
-        }
-        try {
-            image = ImageIO.read(new File(Path));
-            return image;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }
