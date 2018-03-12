@@ -3,23 +3,22 @@ package mitrofanov82.edu.javagroup1.angry_chess.shared_model;
 import java.util.ArrayList;
 
 public interface IGame {
+    long getGameId();
 
-	long getGameId();
+    GameStatusType getGameStatus();
 
-	GameStatusType getGameStatus();
+    FigureType[][] getCurrentPosition();
 
-	FigureType[][] getCurrentPosition();
+    IPlayer getPlayerToMove();
 
-	IPlayer getPlayerToMove();
+    IPlayer getWhitePlayer();
 
-	IPlayer getWhitePlayer();
+    IPlayer getBlackPlayer();
 
-	IPlayer getBlackPlayer();
+    ArrayList<String> getHistoryLog();
 
-	ArrayList<String> getHistoryLog();
-
-	default boolean isFinished() {
-		return getPlayerToMove() == null;
-	};
+    default boolean isFinished() {
+        return getPlayerToMove() == null;
+    };
 
 }
