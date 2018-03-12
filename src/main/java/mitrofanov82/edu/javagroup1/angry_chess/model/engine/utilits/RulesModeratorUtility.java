@@ -20,20 +20,24 @@ public class RulesModeratorUtility {
      * @return
      */
     public static boolean checkMove(GameData currentGame, Coord from, Coord to) {
-        // FIXME for tests
-        /*
-         * if (!checkAdequacy(currentGame, from, to)) { return false; }
-         * 
-         * if (!checkPiece(currentGame, from, to)) { return false; }
-         */
 
+        boolean testON = true; // FIXME for tests
+        if (!testON) {
+            if (!checkAdequacy(currentGame, from, to)) {
+                return false;
+            }
+
+            if (!checkPiece(currentGame, from, to)) {
+                return false;
+            }
+        }
         return true;
     }
 
     private static boolean checkAdequacy(GameData currentGame, Coord from, Coord to) {
-        FigureType[][] board = currentGame.getCurrentPosition();
-        FigureType stepFrom = board[from.getRow()][from.getCol()];
-        FigureType stepTo = board[to.getRow()][to.getCol()];
+        // FigureType[][] board = currentGame.getCurrentPosition();
+        // FigureType stepFrom = board[from.getRow()][from.getCol()];
+        // FigureType stepTo = board[to.getRow()][to.getCol()];
         // if(stepTo=null || stepFrom.)
 
         // TODO Create method checkLogic() in the class RulesModeratorUtility

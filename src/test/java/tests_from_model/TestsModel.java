@@ -104,6 +104,7 @@ public class TestsModel {
     /**
      * Test for working off incorrect data
      */
+    @SuppressWarnings("unused")
     private static boolean test1() {
         ChessModel scm = new ChessModel();
         IPlayer p1 = new TSMPlayer("Player1");
