@@ -1,7 +1,5 @@
 package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
-import mitrofanov82.edu.javagroup1.angry_chess.model.ModelFacade;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;

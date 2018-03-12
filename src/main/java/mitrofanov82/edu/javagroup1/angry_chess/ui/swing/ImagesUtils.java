@@ -1,7 +1,6 @@
 package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.FigureType;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;

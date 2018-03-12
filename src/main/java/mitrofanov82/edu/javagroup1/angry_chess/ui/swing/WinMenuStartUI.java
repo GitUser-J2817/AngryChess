@@ -1,11 +1,8 @@
 package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-
 
 public class WinMenuStartUI extends JFrame{
         private JPanel NameAngrys = new JPanel();
@@ -23,8 +20,7 @@ public class WinMenuStartUI extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
         setLocationRelativeTo(null);
-        setResizable(true);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setResizable(false);
         setLayout(null);
         setVisible(true);
 

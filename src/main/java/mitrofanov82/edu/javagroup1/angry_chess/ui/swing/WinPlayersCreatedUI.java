@@ -1,12 +1,9 @@
 package mitrofanov82.edu.javagroup1.angry_chess.ui.swing;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-
 
 
 public class WinPlayersCreatedUI extends JFrame{
@@ -30,7 +27,7 @@ public class WinPlayersCreatedUI extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
         setLocationRelativeTo(null);
-        setResizable(true);
+        setResizable(false);
         setLayout(null);
 
 
