@@ -6,10 +6,10 @@ public class CreatedPlayers implements IPlayer {
     private String name = "Noname" + (int) (Math.random() * 1000);
     private int rating = 0;
 
-    CreatedPlayers() {
+    public CreatedPlayers() {
     }
 
-    CreatedPlayers(String name) {
+    public CreatedPlayers(String name) {
         this.name = name;
     }
 

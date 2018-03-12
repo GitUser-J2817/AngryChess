@@ -4,18 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class WinMenuStartUI extends JFrame{
-        private JPanel NameAngrys = new JPanel();
-        private JLabel logoAngry = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("angry")));
-        private JLabel logoChess = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("chess")));
-        private JLabel newGameImg = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("newGame")));
-        private JLabel newGameActionImg = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("newGameAction")));
-        private JLabel statisticGame = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("statistic")));
-        private JLabel statisticGameAction = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("statisticAction")));
-        private JLabel gameExit = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("exitGame")));
-        private JLabel exitGameAction = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("exitAction")));
+public class WinMenuStartUI extends JFrame {
+    private JPanel NameAngrys = new JPanel();
+    private JLabel logoAngry = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("angry")));
+    private JLabel logoChess = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("chess")));
+    private JLabel newGameImg = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("newGame")));
+    private JLabel newGameActionImg = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("newGameAction")));
+    private JLabel statisticGame = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("statistic")));
+    private JLabel statisticGameAction = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("statisticAction")));
+    private JLabel gameExit = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("exitGame")));
+    private JLabel exitGameAction = new JLabel(new ImageIcon(ImagesUtils.ImageBufferedIcon("exitAction")));
 
-    WinMenuStartUI(){
+    WinMenuStartUI() {
         super("AngryChess");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
@@ -24,30 +24,30 @@ public class WinMenuStartUI extends JFrame{
         setLayout(null);
         setVisible(true);
 
-        //Общая область для прилипания
+        // Общая область для прилипания
         add(NameAngrys);
-        NameAngrys.setSize(800,600);
-        //NameAngrys.setLocation(0,0);
+        NameAngrys.setSize(800, 600);
+        // NameAngrys.setLocation(0,0);
         NameAngrys.setBackground(Color.white);
         NameAngrys.setLayout(null);
 
-        //БОЛЬШОЕ НАЗВАНИЕ - ЛОГО
-        logoAngry.setLocation(0,10);
-        logoAngry.setSize(800,100);
-        logoChess.setLocation(0,130);
-        logoChess.setSize(800,100);
+        // БОЛЬШОЕ НАЗВАНИЕ - ЛОГО
+        logoAngry.setLocation(0, 10);
+        logoAngry.setSize(800, 100);
+        logoChess.setLocation(0, 130);
+        logoChess.setSize(800, 100);
         NameAngrys.add(logoAngry);
         NameAngrys.add(logoChess);
 
-        //ИНТЕРАКТИВНАЯ кнопка НОВАЯ ИГРА
+        // ИНТЕРАКТИВНАЯ кнопка НОВАЯ ИГРА
         NameAngrys.add(newGameImg);
         newGameImg.setVisible(false);
-        newGameImg.setLocation(200,300);
-        newGameImg.setSize(400,50);
+        newGameImg.setLocation(200, 300);
+        newGameImg.setSize(400, 50);
 
         NameAngrys.add(newGameActionImg);
-        newGameActionImg.setLocation(175,300);
-        newGameActionImg.setSize(450,50);
+        newGameActionImg.setLocation(175, 300);
+        newGameActionImg.setSize(450, 50);
 
         newGameActionImg.addMouseListener(new MouseAdapter() {
             @Override
@@ -70,15 +70,15 @@ public class WinMenuStartUI extends JFrame{
             }
         });
 
-        //ИНТЕРАКТИВНАЯ кнопка СТАТИСТИКА
+        // ИНТЕРАКТИВНАЯ кнопка СТАТИСТИКА
         NameAngrys.add(statisticGame);
-        statisticGame.setSize(450,50);
-        statisticGame.setLocation(175,370);
+        statisticGame.setSize(450, 50);
+        statisticGame.setLocation(175, 370);
         statisticGame.setVisible(false);
 
         NameAngrys.add(statisticGameAction);
-        statisticGameAction.setLocation(150,370);
-        statisticGameAction.setSize(500,50);
+        statisticGameAction.setLocation(150, 370);
+        statisticGameAction.setSize(500, 50);
 
         statisticGameAction.addMouseListener(new MouseAdapter() {
             @Override
@@ -102,15 +102,15 @@ public class WinMenuStartUI extends JFrame{
 
         });
 
-        //ИНТЕРАКТИВНАЯ кнопка ВЫХОД
+        // ИНТЕРАКТИВНАЯ кнопка ВЫХОД
         NameAngrys.add(gameExit);
-        gameExit.setSize(450,50);
-        gameExit.setLocation(175,440);
+        gameExit.setSize(450, 50);
+        gameExit.setLocation(175, 440);
         gameExit.setVisible(false);
 
         NameAngrys.add(exitGameAction);
-        exitGameAction.setLocation(150,440);
-        exitGameAction.setSize(500,50);
+        exitGameAction.setLocation(150, 440);
+        exitGameAction.setSize(500, 50);
 
         exitGameAction.addMouseListener(new MouseAdapter() {
             @Override
