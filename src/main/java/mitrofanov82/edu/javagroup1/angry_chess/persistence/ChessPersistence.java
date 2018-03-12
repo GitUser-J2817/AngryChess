@@ -30,11 +30,11 @@ public class ChessPersistence implements IChessPersistenceAPI {
     private String path = "src/main/resources/history.save";
 
     /**
-     * The Constructor saves all the results of the games into memory
+     * When creating any constructor saves all the results of the games into memory
      */
-    public ChessPersistence() {
+    {
         BufferedReader reader = readerCreator();
-
+        
         try {
             while (reader.ready()) {
                 String[] history = reader.readLine().split(",");
@@ -54,14 +54,37 @@ public class ChessPersistence implements IChessPersistenceAPI {
             e.printStackTrace();
         }
     }
+    
+    
+    /**
+     * The Constructor with default saving directory
+     */
+    public ChessPersistence() {
+    }
+    
+    /**
+     * The Constructor with custom saving directory
+     * 
+     * @param path to saving directory
+     */
+    public ChessPersistence(String path) {
+        this.path = path;
+    }
 
     public void saveGameResults(IGame game) {
         IPlayer whitePLayer = game.getWhitePlayer();
         IPlayer blackPLayer = game.getBlackPlayer();
         GameStatusType winner = game.getGameStatus();
 
-        int whiteIncrement = winner.equals(GameStatusType.WHITE_WIN) ? 1 : 0;
-        int blackIncrement = winner.equals(GameStatusType.BLACK_WIN) ? 1 : 0;
+        int whiteIncrement;
+        int blackIncrement;
+        
+        if (winner.equals(GameStatusType.DRAW)) {
+            whiteIncrement = blackIncrement = 1;
+        } else {
+            whiteIncrement = winner.equals(GameStatusType.WHITE_WIN) ? 2 : 0;
+            blackIncrement = winner.equals(GameStatusType.BLACK_WIN) ? 2 : 0;
+        }
 
         String toWrite = game.getGameId() + "," + winner + "," + whitePLayer.getName() + ","
                 + (whitePLayer.getRating() + whiteIncrement) + "," + blackPLayer.getName() + ","
