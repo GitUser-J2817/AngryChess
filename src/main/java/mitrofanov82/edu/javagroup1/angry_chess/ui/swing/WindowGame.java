@@ -24,15 +24,16 @@ import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
 
 public class WindowGame extends JFrame {
-    private WindowGame windowGame;
-    private SwingUI controler;
-    private IGame curentGame;
+	private WindowGame windowGame;
+	private SwingUI controler;
+	private IGame curentGame;
 
-    private JPanel whitePlayerPanel = new JPanel();
-    private JPanel blackPlayerPanel = new JPanel();
-    private JPanel chessboardPanel = new JPanel();
+	private JPanel whitePlayerPanel = new JPanel();
+	private JPanel blackPlayerPanel = new JPanel();
+	private JPanel chessboardPanel = new JPanel();
+	private JPanel drawFiguresOnBoard = null;
 
-    public WindowGame(SwingUI swingUI, IGame game) {
+	public WindowGame(SwingUI swingUI, IGame game) {
         super("Angry Chess - GAME");
         this.controler = swingUI;
         this.curentGame = game;
@@ -59,7 +60,8 @@ public class WindowGame extends JFrame {
         JPanel glassBoard = new JPanel();
         glassBoard.setOpaque(false);
 
-        chessboardPanel.add(new DrawFiguresOnBoard(curentGame, controler));
+        
+        drawFiguresOnBoard = new DrawFiguresOnBoard(curentGame, controler);
 
         JPanel fullBoard = new JPanel();
         fullBoard.setLayout(null);
@@ -91,6 +93,7 @@ public class WindowGame extends JFrame {
         backgroundChessboard.setBounds(22, 21, 500, 500);
         Border etched = BorderFactory.createEtchedBorder();
         Border titled = BorderFactory.createTitledBorder(etched);
+        chessboardPanel.add(drawFiguresOnBoard);
         backgroundChessboard.setBorder(titled);
         fullBoard.add(backgroundChessboard);
         chessboardPanel.add(fullBoard);
@@ -188,8 +191,9 @@ public class WindowGame extends JFrame {
                     curentGame = controler.makeMove(curentGame);
 
                     // FIXME починить
-                    chessboardPanel.removeAll();
-                    chessboardPanel.add(new DrawFiguresOnBoard(curentGame, controler));
+                    chessboardPanel.remove(drawFiguresOnBoard );
+                    drawFiguresOnBoard = new DrawFiguresOnBoard(curentGame, controler);
+                    chessboardPanel.add(drawFiguresOnBoard);
                     chessboardPanel.updateUI();
                     windowGame.repaint();
 
@@ -243,9 +247,10 @@ public class WindowGame extends JFrame {
                 if (controler.figureIsChoise() && controler.moveIsChoise()) {
                     curentGame = controler.makeMove(curentGame);
 
-                    // FIXME починить
-                    chessboardPanel.removeAll();
-                    chessboardPanel.add(new DrawFiguresOnBoard(curentGame, controler));
+                 // FIXME починить
+                    chessboardPanel.remove(drawFiguresOnBoard );
+                    drawFiguresOnBoard = new DrawFiguresOnBoard(curentGame, controler);
+                    chessboardPanel.add(drawFiguresOnBoard);
                     chessboardPanel.updateUI();
                     windowGame.repaint();
 
