@@ -1,0 +1,10 @@
+CREATE TABLE users (
+id			int				PRIMARY KEY,
+login		varchar(32)		UNIQUE	NOT NULL,
+password	varchar			NOT NULL,			-- HASH password.
+/*Without constraints and varcar, because don't know what algorithm want use.*/
+user_name	varchar(24)		UNIQUE NOT NULL,
+rating		int,							/* Maybe is decimal? */
+email		varchar(50)		UNIQUE,			/* I do not know why.Let it be. */
+avatar		varchar								-- URL image.
+);
