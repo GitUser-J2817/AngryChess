@@ -21,7 +21,7 @@ public class Coord {
     @Override
     public String toString() {
         char[] letters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
-        return (row + 1) + "-" + letters[col];
+        return  ""+letters[col]+(row + 1);
     }
 
 }
