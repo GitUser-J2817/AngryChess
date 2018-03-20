@@ -24,16 +24,19 @@ import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IGame;
 import mitrofanov82.edu.javagroup1.angry_chess.shared_model.IPlayer;
 
 public class WindowGame extends JFrame {
-	private WindowGame windowGame;
-	private SwingUI controler;
-	private IGame curentGame;
+    private WindowGame windowGame;
+    private SwingUI controler;
+    private IGame curentGame;
 
-	private JPanel whitePlayerPanel = new JPanel();
-	private JPanel blackPlayerPanel = new JPanel();
-	private JPanel chessboardPanel = new JPanel();
-	private JPanel drawFiguresOnBoard = null;
+    private JPanel whitePlayerPanel = new JPanel();
+    private JPanel blackPlayerPanel = new JPanel();
+    private JPanel chessboardPanel = new JPanel();
+    private JPanel figuresOnBoard = null;
+    
+    private Border etched = BorderFactory.createEtchedBorder();
+    private Border titled = BorderFactory.createTitledBorder(etched);
 
-	public WindowGame(SwingUI swingUI, IGame game) {
+    public WindowGame(SwingUI swingUI, IGame game) {
         super("Angry Chess - GAME");
         this.controler = swingUI;
         this.curentGame = game;
@@ -50,54 +53,11 @@ public class WindowGame extends JFrame {
         this.setResizable(false);
         this.getContentPane().setLayout(null);
 
-        // Panel Chessboard
-        getContentPane().add(chessboardPanel);
-        chessboardPanel.setLayout(null);
-        chessboardPanel.setBackground(Color.lightGray);
-        chessboardPanel.setLocation(170, 0);
-        chessboardPanel.setSize(630, 610);
-
-        JPanel glassBoard = new JPanel();
-        glassBoard.setOpaque(false);
-
+        // Panel chessboard
+        this.getContentPane().add(chessboardPanel);
+        figuresOnBoard = new DrawFiguresOnBoard(curentGame, controler);
+        createChessboardPanel();
         
-        drawFiguresOnBoard = new DrawFiguresOnBoard(curentGame, controler);
-
-        JPanel fullBoard = new JPanel();
-        fullBoard.setLayout(null);
-        fullBoard.setBounds(36, 28, 544, 542);
-
-        String liters = "                  A                  B                  C                  D                  E                  F                  G                  H";
-        String numbers = "<html>1<br><br><br><br>2<br><br><br><br>3<br><br><br><br>4<br><br><br><br>5<br><br><br><br>6<br><br><br><br>7<br><br><br><br>8</html>";
-
-        JLabel numbTop = new JLabel(liters);
-        numbTop.setBounds(0, 0, 544, 21);
-        fullBoard.add(numbTop);
-
-        JLabel numbBottom = new JLabel(liters);
-        numbBottom.setBounds(0, 518, 544, 24);
-        fullBoard.add(numbBottom);
-
-        JLabel numbRight = new JLabel(numbers);
-        numbRight.setHorizontalTextPosition(SwingConstants.LEADING);
-        numbRight.setBounds(530, 0, 14, 539);
-        fullBoard.add(numbRight);
-
-        JLabel numbLeft = new JLabel(numbers);
-        numbLeft.setHorizontalTextPosition(SwingConstants.LEADING);
-        numbLeft.setBounds(10, 0, 14, 539);
-        fullBoard.add(numbLeft);
-
-        JLabel backgroundChessboard = new JLabel(
-                new ImageIcon(ImagesUtils.ImageBufferedIcon("backgroundChessBoard.jpg")));
-        backgroundChessboard.setBounds(22, 21, 500, 500);
-        Border etched = BorderFactory.createEtchedBorder();
-        Border titled = BorderFactory.createTitledBorder(etched);
-        chessboardPanel.add(drawFiguresOnBoard);
-        backgroundChessboard.setBorder(titled);
-        fullBoard.add(backgroundChessboard);
-        chessboardPanel.add(fullBoard);
-
         // TODO Добавить реализацию ЛогЧата
         JTextArea logChat = new JTextArea(9000, 20);
         JScrollPane Scroll = new JScrollPane(logChat);
@@ -190,12 +150,9 @@ public class WindowGame extends JFrame {
                 if (controler.figureIsChoise() && controler.moveIsChoise()) {
                     curentGame = controler.makeMove(curentGame);
 
-                    // FIXME починить
-                    chessboardPanel.remove(drawFiguresOnBoard );
-                    drawFiguresOnBoard = new DrawFiguresOnBoard(curentGame, controler);
-                    chessboardPanel.add(drawFiguresOnBoard);
-                    chessboardPanel.updateUI();
-                    windowGame.repaint();
+                    chessboardPanel.removeAll();
+                    figuresOnBoard = new DrawFiguresOnBoard(curentGame, controler);
+                    createChessboardPanel();
 
                     whitePlayerPanel.setVisible(false);
                     chessboardPanel.setLocation(0, 0);
@@ -247,12 +204,9 @@ public class WindowGame extends JFrame {
                 if (controler.figureIsChoise() && controler.moveIsChoise()) {
                     curentGame = controler.makeMove(curentGame);
 
-                 // FIXME починить
-                    chessboardPanel.remove(drawFiguresOnBoard );
-                    drawFiguresOnBoard = new DrawFiguresOnBoard(curentGame, controler);
-                    chessboardPanel.add(drawFiguresOnBoard);
-                    chessboardPanel.updateUI();
-                    windowGame.repaint();
+                    chessboardPanel.removeAll();
+                    figuresOnBoard = new DrawFiguresOnBoard(curentGame, controler);
+                    createChessboardPanel();
 
                     whitePlayerPanel.setVisible(true);
                     chessboardPanel.setLocation(170, 0);
@@ -330,6 +284,50 @@ public class WindowGame extends JFrame {
         });
         menu.add(menuItem_6);
 
+    }
+
+    private void createChessboardPanel() {
+        chessboardPanel.setLayout(null);
+        chessboardPanel.setBackground(Color.lightGray);
+        chessboardPanel.setLocation(170, 0);
+        chessboardPanel.setSize(630, 610);
+        
+        JPanel glassBoard = new JPanel();
+        glassBoard.setOpaque(false);
+        
+        JPanel fullBoard = new JPanel();
+        fullBoard.setLayout(null);
+        fullBoard.setBounds(36, 28, 544, 542);
+
+        String liters = "                  A                  B                  C                  D                  E                  F                  G                  H";
+        String numbers = "<html>1<br><br><br><br>2<br><br><br><br>3<br><br><br><br>4<br><br><br><br>5<br><br><br><br>6<br><br><br><br>7<br><br><br><br>8</html>";
+
+        JLabel numbTop = new JLabel(liters);
+        numbTop.setBounds(0, 0, 544, 21);
+        fullBoard.add(numbTop);
+
+        JLabel numbBottom = new JLabel(liters);
+        numbBottom.setBounds(0, 518, 544, 24);
+        fullBoard.add(numbBottom);
+
+        JLabel numbRight = new JLabel(numbers);
+        numbRight.setHorizontalTextPosition(SwingConstants.LEADING);
+        numbRight.setBounds(530, 0, 14, 539);
+        fullBoard.add(numbRight);
+
+        JLabel numbLeft = new JLabel(numbers);
+        numbLeft.setHorizontalTextPosition(SwingConstants.LEADING);
+        numbLeft.setBounds(10, 0, 14, 539);
+        fullBoard.add(numbLeft);
+
+        JLabel backgroundChessboard = new JLabel(
+                new ImageIcon(ImagesUtils.ImageBufferedIcon("backgroundChessBoard.jpg")));
+        backgroundChessboard.setBounds(22, 21, 500, 500);
+        
+        chessboardPanel.add(figuresOnBoard);
+        backgroundChessboard.setBorder(titled);
+        fullBoard.add(backgroundChessboard);
+        chessboardPanel.add(fullBoard);
     }
 
 }
