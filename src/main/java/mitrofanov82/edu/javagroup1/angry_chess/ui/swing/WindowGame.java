@@ -32,7 +32,7 @@ public class WindowGame extends JFrame {
     private JPanel blackPlayerPanel = new JPanel();
     private JPanel chessboardPanel = new JPanel();
     private JPanel figuresOnBoard = null;
-    
+
     private Border etched = BorderFactory.createEtchedBorder();
     private Border titled = BorderFactory.createTitledBorder(etched);
 
@@ -45,6 +45,7 @@ public class WindowGame extends JFrame {
         IPlayer firstPlayer = curentGame.getWhitePlayer();
         IPlayer secondPlayer = curentGame.getBlackPlayer();
 
+        // *****************Configuration of window*********************
         this.setTitle("Angry Chess - GAME (" + firstPlayer.getName() + " VS " + secondPlayer.getName() + ")");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 640);
@@ -53,17 +54,17 @@ public class WindowGame extends JFrame {
         this.setResizable(false);
         this.getContentPane().setLayout(null);
 
-        // Panel chessboard
+        // *********************Panel chessboard************************
         this.getContentPane().add(chessboardPanel);
         figuresOnBoard = new DrawFiguresOnBoard(curentGame, controler);
         createChessboardPanel();
-        
-        // TODO Добавить реализацию ЛогЧата
+
+        // **********************Panel log game*************************
+        // TODO logChat
         JTextArea logChat = new JTextArea(9000, 20);
         JScrollPane Scroll = new JScrollPane(logChat);
         Scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        // LogChat.setAutoscrolls(true);
-        // WinGameChessboardPanel.add(LogChat);
+        logChat.setAutoscrolls(true);
         logChat.setLocation(60, 535);
         logChat.setBackground(Color.white);
         logChat.setText("***Start NEW GAME " + firstPlayer.getName() + " VS " + secondPlayer.getName() + "***\n\r");
@@ -73,7 +74,9 @@ public class WindowGame extends JFrame {
         logChat.setSize(500, 50);
         logChat.setBorder(titled);
 
-        // Panel WhitePlayer
+        // windowGame.add(LogChat);
+
+        // ********************Panel White Player***********************
         whitePlayerPanel.setLayout(null);
         whitePlayerPanel.setBackground(Color.orange);
         whitePlayerPanel.setLocation(0, 0);
@@ -105,9 +108,9 @@ public class WindowGame extends JFrame {
         backMenuWhite.setLocation(25, 520);
         whitePlayerPanel.add(backMenuWhite);
 
-        getContentPane().add(whitePlayerPanel);
+        this.getContentPane().add(whitePlayerPanel);
 
-        // Panel BlackPlayer
+        // ********************Panel Black Player***********************
         blackPlayerPanel.setLayout(null);
         blackPlayerPanel.setLocation(630, 0);
         blackPlayerPanel.setBackground(Color.yellow);
@@ -140,10 +143,14 @@ public class WindowGame extends JFrame {
         backMenuBlack.setLocation(25, 520);
         blackPlayerPanel.add(backMenuBlack);
 
-        getContentPane().add(blackPlayerPanel);
+        this.getContentPane().add(blackPlayerPanel);
 
-        // WhitePlayer
+        // **************************TEST MENU**************************
+        this.setJMenuBar(createTestMenu());
+
+        // *******************Listeners for White Player****************
         //
+        // TODO Comment hitWhite.addMouseListener(new MouseAdapter(){})
         hitWhite.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -167,7 +174,7 @@ public class WindowGame extends JFrame {
             }
         });
 
-        //
+        // TODO Comment cancelHitWhite.addMouseListener(new MouseAdapter(){})
         cancelHitWhite.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -177,7 +184,7 @@ public class WindowGame extends JFrame {
             }
         });
 
-        //
+        // TODO Comment backMenuWhite.addMouseListener(new MouseAdapter(){})
         backMenuWhite.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -196,8 +203,9 @@ public class WindowGame extends JFrame {
             }
         });
 
-        // Listeners for BlackPlayer
+        // *******************Listeners for Black Player****************
         //
+        // TODO Comment hitBlack.addMouseListener(new MouseAdapter(){})
         hitBlack.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -221,7 +229,7 @@ public class WindowGame extends JFrame {
             }
         });
 
-        //
+        // TODO Comment cancelHitBlack.addMouseListener(new MouseAdapter(){})
         cancelHitBlack.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -231,7 +239,7 @@ public class WindowGame extends JFrame {
             }
         });
 
-        //
+        // TODO Comment backMenuBlack.addMouseListener(new MouseAdapter(){})
         backMenuBlack.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -251,50 +259,20 @@ public class WindowGame extends JFrame {
             }
         });
 
-        // TEST MENU
-        JMenuBar menuBar = new JMenuBar();
-
-        setJMenuBar(menuBar);
-        JMenu menu = new JMenu("Админка");
-        menuBar.add(menu);
-        JMenu menu_2 = new JMenu("Сдаться");
-        menu.add(menu_2);
-        JMenuItem menuItem_3 = new JMenuItem("Белые");
-        menu_2.add(menuItem_3);
-        JMenuItem menuItem_4 = new JMenuItem("Черные");
-        menu_2.add(menuItem_4);
-        JMenu menu_3 = new JMenu("Мат");
-        menu.add(menu_3);
-        JMenuItem menuItem = new JMenuItem("Белые");
-        menu_3.add(menuItem);
-        JMenuItem menuItem_5 = new JMenuItem("Черные");
-        menu_3.add(menuItem_5);
-        JMenu menu_1 = new JMenu("Шах");
-        menu.add(menu_1);
-        JMenuItem menuItem_1 = new JMenuItem("Белые");
-        menu_1.add(menuItem_1);
-        JMenuItem menuItem_2 = new JMenuItem("Черные");
-        menu_1.add(menuItem_2);
-        JMenuItem menuItem_6 = new JMenuItem("Выход");
-        menuItem_6.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                System.exit(0);
-            }
-        });
-        menu.add(menuItem_6);
-
     }
 
+    /*
+     * TODO Doc createChessboardPanel()
+     */
     private void createChessboardPanel() {
         chessboardPanel.setLayout(null);
         chessboardPanel.setBackground(Color.lightGray);
         chessboardPanel.setLocation(170, 0);
         chessboardPanel.setSize(630, 610);
-        
+
         JPanel glassBoard = new JPanel();
         glassBoard.setOpaque(false);
-        
+
         JPanel fullBoard = new JPanel();
         fullBoard.setLayout(null);
         fullBoard.setBounds(36, 28, 544, 542);
@@ -323,11 +301,78 @@ public class WindowGame extends JFrame {
         JLabel backgroundChessboard = new JLabel(
                 new ImageIcon(ImagesUtils.ImageBufferedIcon("backgroundChessBoard.jpg")));
         backgroundChessboard.setBounds(22, 21, 500, 500);
-        
+
         chessboardPanel.add(figuresOnBoard);
         backgroundChessboard.setBorder(titled);
         fullBoard.add(backgroundChessboard);
         chessboardPanel.add(fullBoard);
+    }
+
+    /*
+     * TODO Doc createTestMenu()
+     */
+    private JMenuBar createTestMenu() {
+
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu menu = new JMenu("Админка");
+        menuBar.add(menu);
+
+        JMenu menu_2 = new JMenu("Сдаться");
+        menu.add(menu_2);
+
+        JMenuItem menuItem_3 = new JMenuItem("Белые");
+        menu_2.add(menuItem_3);
+        menuItem_3.addMouseListener(new MouseAdapter() {
+            // TODO Меню.Сдаться.Белые
+        });
+
+        JMenuItem menuItem_4 = new JMenuItem("Черные");
+        menu_2.add(menuItem_4);
+        menuItem_4.addMouseListener(new MouseAdapter() {
+            // TODO Меню.Сдаться.Черные
+        });
+
+        JMenu menu_3 = new JMenu("Мат");
+        menu.add(menu_3);
+
+        JMenuItem menuItem = new JMenuItem("Белые");
+        menu_3.add(menuItem);
+        menuItem.addMouseListener(new MouseAdapter() {
+            // TODO Меню.Мат.Белые
+        });
+
+        JMenuItem menuItem_5 = new JMenuItem("Черные");
+        menu_3.add(menuItem_5);
+        menuItem_5.addMouseListener(new MouseAdapter() {
+         // TODO Меню.Мат.Черные
+        });
+
+        JMenu menu_1 = new JMenu("Шах");
+        menu.add(menu_1);
+
+        JMenuItem menuItem_1 = new JMenuItem("Белые");
+        menu_1.add(menuItem_1);
+        menuItem_1.addMouseListener(new MouseAdapter() {
+            // TODO Меню.Шах.Белые
+        });
+
+        JMenuItem menuItem_2 = new JMenuItem("Черные");
+        menu_1.add(menuItem_2);
+        menuItem_2.addMouseListener(new MouseAdapter() {
+            // TODO Меню.Шах.Черные
+        });
+
+        JMenuItem menuItem_6 = new JMenuItem("Выход");
+        menuItem_6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.exit(0);
+            }
+        });
+        menu.add(menuItem_6);
+
+        return menuBar;
     }
 
 }
