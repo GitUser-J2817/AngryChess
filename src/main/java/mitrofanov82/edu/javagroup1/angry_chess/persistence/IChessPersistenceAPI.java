@@ -15,8 +15,9 @@ public interface IChessPersistenceAPI {
      * Saves the current state of the game
      *  
      * @param game - the object with the current state of the game
+     * @throws Exception 
      */
-    void saveGameResults(IGame game);
+    void saveGameResults(IGame game) throws Exception;
 
     /**
      * Returns history of all games

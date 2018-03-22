@@ -324,7 +324,6 @@ public class WindowGame extends JFrame {
         JMenuItem menuItem_3 = new JMenuItem("Белые");
         menu_2.add(menuItem_3);
         menuItem_3.addMouseListener(new MouseAdapter() {
-            // TODO Меню.Сдаться.Белые
         });
 
         JMenuItem menuItem_4 = new JMenuItem("Черные");
